@@ -1,0 +1,48 @@
+{
+  "name": "mnehmos.comfyui.mcp",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
+    "smoke": "node dist/index.js --self-test"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "comfyui",
+    "render",
+    "workflow",
+    "image-generation",
+    "3d"
+  ],
+  "author": "Mnehmos",
+  "license": "MIT",
+  "description": "MCP server for the local ComfyUI render service (127.0.0.1:8188): server status, workflow validation (basics gate), seeded renders with provenance, and model inventory",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mnehmos/mnehmos.comfyui.mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Mnehmos/mnehmos.comfyui.mcp/issues"
+  },
+  "homepage": "https://github.com/Mnehmos/mnehmos.comfyui.mcp#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.10.2",
+    "better-sqlite3": "^12.2.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.15.2",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.8.3"
+  }
+}

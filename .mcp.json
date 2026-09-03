@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "comfyui": {
+      "type": "stdio",
+      "command": "C:\\Users\\mnehm\\AppData\\Roaming\\fnm\\node-versions\\v22.22.1\\installation\\node.exe",
+      "args": [
+        "F:\\Github\\mnehmos.comfyui.mcp\\dist\\index.js"
+      ],
+      "description": "comfyui: render + manage ComfyUI workflows — server status, basics-gate validation, seeded renders with provenance, model inventory"
+    }
+  }
+}

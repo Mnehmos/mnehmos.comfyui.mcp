@@ -1,0 +1,17 @@
+# --- build ---
+dist/
+data/
+*.tsbuildinfo
+
+# --- deps ---
+node_modules/
+
+# --- secrets (TMRI standard) ---
+.env
+.env.*
+!.env.example
+!.env.sample
+*.key
+*.pem
+*.pfx
+secrets.json
