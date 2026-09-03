@@ -186,7 +186,9 @@ async function waitForRun(
 function extractOutputs(entry: HistoryEntry): Provenance['outputs'] {
   const out: Provenance['outputs'] = [];
   for (const nodeOut of Object.values(entry.outputs ?? {})) {
-    const images = (nodeOut as Record<string, unknown>).images as Array<Record<string, string>> | undefined;
+    const rec = nodeOut as Record<string, unknown>;
+    // 2D image outputs: [{filename, subfolder, type}]
+    const images = rec.images as Array<Record<string, string>> | undefined;
     if (Array.isArray(images)) {
       for (const im of images) {
         out.push({
@@ -194,6 +196,19 @@ function extractOutputs(entry: HistoryEntry): Provenance['outputs'] {
           subfolder: im.subfolder ?? '',
           type: im.type ?? 'output',
         });
+      }
+    }
+    // 3D outputs (Save3DAdvanced): {result: ["subdir/file.glb", ...]}
+    const result = rec.result as Array<unknown> | undefined;
+    if (Array.isArray(result)) {
+      for (const r of result) {
+        if (typeof r !== 'string' || !r) continue;
+        const idx = r.lastIndexOf('/');
+        out.push(
+          idx >= 0
+            ? { filename: r.slice(idx + 1), subfolder: r.slice(0, idx), type: 'output' }
+            : { filename: r, subfolder: '', type: 'output' },
+        );
       }
     }
   }
